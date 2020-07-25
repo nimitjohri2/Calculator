@@ -97,8 +97,8 @@
                 $.each(feed, function (id, equation){
                     //console.log('id = ' + id + ' value = ' + equation);
                     var pageFeed = jQuery(
-                        "<div  class='row' id=" + id + " style=' padding-top: 2%; border-style: ridge;' >" +
-                        "<div class='col-md-12'>" + equation + "</div>" +
+                        "<div  class='row' id=" + equation[0] + " style=' padding-top: 2%; border-style: ridge;' >" +
+                        "<div class='col-md-12'>" + equation[1] + "</div>" +
                         "</div>"
                     );
                     jQuery('#feed').append(pageFeed);

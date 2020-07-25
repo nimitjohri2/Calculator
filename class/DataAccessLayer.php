@@ -86,9 +86,11 @@ class DataAccessLayer
         $query = 'SELECT id, equation FROM log ORDER BY id DESC LIMIT 10';
         $result = $connect->query($query);
 
+        $feed = [];
         while ($equation = $result->fetch_assoc())
         {
-            $feed[$equation['id']] = $equation['equation'];
+            //$feed[$equation['id']] = $equation['equation'];
+            array_push($feed, array($equation['id'], $equation['equation']));
         }
 
 
