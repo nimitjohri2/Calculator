@@ -49,7 +49,8 @@
 
 <script>
     $( document ).ready(function() {
-
+	
+	//update every 2 seconds for live updates
         setInterval(update,2000);
 
         $( "#calculator" ).submit(function(e) {
@@ -69,9 +70,9 @@
                 cache: false,
                 processData:false,
                 success: function(response){
-                    console.log(response);
+                    //console.log(response);
                     var answer = JSON.parse(response);
-                    console.log(answer);
+                    //console.log(answer);
                     $('#answer').val(answer.answer);
 
                 }
@@ -96,6 +97,8 @@
 
                 $.each(feed, function (id, equation){
                     //console.log('id = ' + id + ' value = ' + equation);
+                    
+                    //Add dynamically created HTML elements on runtime
                     var pageFeed = jQuery(
                         "<div  class='row' id=" + equation[0] + " style=' padding-top: 2%; border-style: ridge;' >" +
                         "<div class='col-md-12'>" + equation[1] + "</div>" +

@@ -1,6 +1,7 @@
 <?php
 require_once ('./class/DataAccessLayer.php');
 
+//Testing inputs
 //$_POST['first'] = 5;
 //$_POST['operator'] = 4;
 //$_POST['second'] = 10;
@@ -8,6 +9,7 @@ require_once ('./class/DataAccessLayer.php');
 $answer = 0;
 $equation = '';
 
+//process calculation and prepare equation string
 switch ($_POST['operator'])
 {
     case '1':
@@ -28,12 +30,16 @@ switch ($_POST['operator'])
         break;
 }
 
+//Create object for DataAccessLayer
 $dal = new DataAccessLayer() ;
+
+//Request DAL to log the calculation
 $inserted = $dal->Log($equation);
 
 $status = 0;
 if ($inserted)
 {
+	//Run maintainence to remove extra rows from the database
     $dal->Maintainence();
 
     $status = 1;
@@ -41,6 +47,7 @@ if ($inserted)
 else
     $status = 0;
 
+//preapare response
 echo json_encode(array(
     'status' => $status,
     'answer' => $answer
